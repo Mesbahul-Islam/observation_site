@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error - Astronomy Observations</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/components.css}" />
+    <link rel="stylesheet" th:href="@{/css/pages/error.css}" />
+</head>
+<body>
+    <div th:replace="~{fragments/header :: navbar}"></div>
+    
+    <div class="container error-container">
+        <div class="error-box">
+            <h1>Oops! Something went wrong</h1>
+            <p>We're sorry, but there was an error processing your request.</p>
+            
+            <div class="error-details">
+                <p>Error: <span th:text="${status}">500</span> - <span th:text="${error}">Internal Server Error</span></p>
+                <p th:text="${message}">Error Message</p>
+            </div>
+            
+            <div class="back-home">
+                <a th:href="@{/}" class="button">Return to Home Page</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

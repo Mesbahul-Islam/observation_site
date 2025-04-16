@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Observation Form - Astronomy Observations</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/components.css}" />
+    <link rel="stylesheet" th:href="@{/css/pages/observations.css}" />
+</head>
+<body>
+    <div th:replace="~{fragments/header :: navbar}"></div>
+    
+    <div class="container">
+        <h1>Add New Observation</h1>
+        
+        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+        
+        <form th:action="@{/observations}" method="post">
+            <!-- Observation Name -->
+            <div class="form-group">
+                <label for="name">Observation Name</label>
+                <input type="text" id="name" name="name" required />
+            </div>
+            
+            <!-- Description -->
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="5" required></textarea>
+            </div>
+            
+            <!-- Astronomical Coordinates -->
+            <h3>Astronomical Coordinates</h3>
+            <div class="form-group">
+                <label for="rightAscension">Right Ascension (hours)</label>
+                <input type="number" id="rightAscension" name="rightAscension" 
+                       step="0.0001" min="0" max="24" required />
+                <small>Value between 0 and 24 hours</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="declination">Declination (degrees)</label>
+                <input type="number" id="declination" name="declination" 
+                       step="0.0001" min="-90" max="90" required />
+                <small>Value between -90 and +90 degrees</small>
+            </div>
+            
+            <!-- Observatory Information -->
+            <h3>Observation Location</h3>
+            <div class="form-group">
+                <label for="observatoryName">Observatory Name</label>
+                <input type="text" id="observatoryName" name="observatoryName" required />
+            </div>
+            
+            <div class="form-group">
+                <label for="latitude">Latitude (degrees)</label>
+                <input type="number" id="latitude" name="latitude" 
+                       step="0.0001" min="-90" max="90" required />
+                <small>Value between -90 and +90 degrees</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="longitude">Longitude (degrees)</label>
+                <input type="number" id="longitude" name="longitude" 
+                       step="0.0001" min="-180" max="180" required />
+                <small>Value between -180 and +180 degrees</small>
+            </div>
+            
+            <button type="submit">Save Observation</button>
+        </form>
+    </div>
+</body>
+</html>

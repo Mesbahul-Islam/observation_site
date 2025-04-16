@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Astronomy Observations</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/components.css}" />
+    <link rel="stylesheet" th:href="@{/css/pages/home.css}" />
+    <link rel="stylesheet" th:href="@{/css/navbar.css}" />
+</head>
+<body>
+    <div th:replace="~{fragments/header :: navbar}"></div>
+    
+    <div class="hero">
+        <h1>Welcome to Astronomy Observations</h1>
+        <p>Your place for sharing and discovering astronomical observations!</p>
+    </div>
+    
+    <div class="container">
+        <div class="featured-section">
+            <h2>Most Popular Observations</h2>
+            <div class="observation-cards" th:if="${popularObservations != null}">
+                <div class="observation-card" th:each="observation : ${popularObservations}">
+                    <h3><a th:href="@{/observations/{id}(id=${observation.id})}" th:text="${observation.name}">Observation Name</a></h3>
+                    <p th:text="${observation.description}">Description</p>
+                    <p>By: <span th:text="${observation.user.nickname}">User</span></p>
+                    <p>Views: <span th:text="${observation.viewCount}">0</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="featured-section">
+            <div class="col">
+                <h2>Most Commented Observation</h2>
+                <div class="observation-card" th:if="${mostCommented != null}">
+                    <h3><a th:href="@{/observations/{id}(id=${mostCommented.id})}" th:text="${mostCommented.name}">Observation Name</a></h3>
+                    <p th:text="${mostCommented.description}">Description</p>
+                    <p>By: <span th:text="${mostCommented.user.nickname}">User</span></p>
+                </div>
+            </div>
+            
+            <div class="col">
+                <h2>Highest Rated Observation</h2>
+                <div class="observation-card" th:if="${highestRated != null}">
+                    <h3><a th:href="@{/observations/{id}(id=${highestRated.id})}" th:text="${highestRated.name}">Observation Name</a></h3>
+                    <p th:text="${highestRated.description}">Description</p>
+                    <p>By: <span th:text="${highestRated.user.nickname}">User</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

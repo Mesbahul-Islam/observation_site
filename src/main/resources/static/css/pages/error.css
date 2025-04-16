@@ -1,0 +1,34 @@
+/* Error page styling */
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 20px;
+}
+
+.error-box {
+    max-width: 600px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.error-box h1 {
+    color: #d9534f;
+    margin-bottom: 20px;
+}
+
+.error-details {
+    margin: 30px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.back-home {
+    margin-top: 30px;
+}

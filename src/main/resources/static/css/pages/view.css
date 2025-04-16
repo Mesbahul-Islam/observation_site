@@ -1,0 +1,206 @@
+.observation-card {
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-header {
+    display: flex;
+    background-color: #2980b9;
+    color: white;
+    padding: 20px 30px;
+    position: relative;
+}
+
+.card-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.card-section {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.card-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.card-label {
+    font-weight: 600;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+}
+
+.card-value {
+    font-size: 1.1rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.meta-info {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.meta-info > div {
+    margin-right: 15px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; 
+    margin-left: auto;
+}
+
+.action-buttons > a {
+    text-decoration: none;
+    color: white;
+    background-color: #1a445f;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.action-buttons > a:hover {
+    background-color: #1c6a8c;
+    color: white;
+}
+
+.form-button{
+    background-color: #1a445f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.form-button:hover {
+    background-color: #1c6a8c;
+}
+
+.btn-danger {
+    background-color: #1a445f !important;
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #1c6a8c !important;
+}
+
+
+.comments-card {
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 30px;
+}
+
+
+
+.comment {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 15px;
+}
+
+/* Rating style */
+.rating-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    margin: 0 3px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input:checked ~ label {
+    background-color: #f8ce0b;
+    color: #fff;
+}
+
+.rating-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rating-form button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #1a445f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.rating-form button:hover {
+    background-color: #1c6a8c;
+}
+
+
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        position: static;
+        margin-top: 15px;
+    }
+}
