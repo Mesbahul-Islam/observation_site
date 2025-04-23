@@ -5,16 +5,42 @@
     <link rel="stylesheet" th:href="@{/css/base.css}" />
     <link rel="stylesheet" th:href="@{/css/components.css}" />
     <link rel="stylesheet" th:href="@{/css/pages/observations.css}" />
+
+    <style>
+        form {
+            position: relative;  /* custom styling for the close button */
+        }
+        .form-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            background: rgb(211, 96, 96);
+            border-radius: 50%;
+            aspect-ratio: 1 / 1;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: color 0.2s;
+        }
+    </style>
 </head>
 <body>
     <div th:replace="~{fragments/header :: navbar}"></div>
     
-    <div class="container">
+    <div class="container" style="position: relative;">
         <h1>Add New Observation</h1>
         
         <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
         
         <form th:action="@{/observations}" method="post">
+            <span class="close-btn form-close-btn" onclick="handleClose()">&times;</span>
+
             <!-- Observation Name -->
             <div class="form-group">
                 <label for="name">Observation Name</label>
@@ -68,4 +94,14 @@
         </form>
     </div>
 </body>
+
+    <script>
+    function handleClose() {
+        if (document.referrer && document.referrer !== window.location.href) {
+            window.history.back();
+        } else {
+            window.location.href = '/observations';
+        }
+    }
+    </script>
 </html>

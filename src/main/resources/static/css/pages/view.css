@@ -110,6 +110,28 @@
     background-color: #1c6a8c !important;
 }
 
+.close-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    background: rgb(230, 65, 65);
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: color 0.2s;
+}
+.close-btn:hover {
+    color: #f44336;
+}
+
 
 .comments-card {
     max-width: 900px;

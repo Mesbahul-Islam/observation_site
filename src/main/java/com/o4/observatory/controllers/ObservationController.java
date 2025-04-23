@@ -1,8 +1,10 @@
 package com.o4.observatory.controllers;
 
+import com.o4.observatory.models.Collection;
 import com.o4.observatory.models.Observation;
 import com.o4.observatory.models.User;
 import com.o4.observatory.repositories.UserRepository;
+import com.o4.observatory.services.CollectionService;
 import com.o4.observatory.services.ObservationService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -22,8 +24,10 @@ public class ObservationController {
 
     private final ObservationService observationService;
     private final UserRepository userRepository;
+    private final CollectionService collectionService;
     
-    public ObservationController(ObservationService observationService, UserRepository userRepository) {
+    public ObservationController(ObservationService observationService, UserRepository userRepository, CollectionService collectionService) {
+        this.collectionService = collectionService;
         this.observationService = observationService;
         this.userRepository = userRepository;
     }
@@ -71,9 +75,17 @@ public class ObservationController {
     
     // View a single observation (increments view count)
     @GetMapping("/{id}")
-    public String viewObservation(@PathVariable Long id, Model model) {
+    public String viewObservation(@PathVariable Long id, Model model, Authentication authentication) {
         Observation observation = observationService.viewObservation(id);
         model.addAttribute("observation", observation);
+
+        if(authentication != null && authentication.isAuthenticated()) {
+            User currentUser = getCurrentUser(authentication);
+            List<Collection> userCollections = collectionService.getUserCollections(currentUser);
+            model.addAttribute("userCollections", userCollections);
+
+            System.out.println("User Collections: " + userCollections);
+        }
         return "observations/view";
     }
     

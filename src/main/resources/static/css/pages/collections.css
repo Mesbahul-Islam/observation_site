@@ -1,0 +1,47 @@
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.collection-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.collection-card:hover {
+    transform: translateY(-5px);
+}
+
+.collection-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.collection-card .observation-count {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.collection-card .description {
+    margin-bottom: 15px;
+}
+
+.collection-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    color: #6c757d;
+    margin-top: 30px;
+}

@@ -52,7 +52,7 @@ public class CollectionService {
     public List<Collection> getAllCollections() {
         return collectionRepository.findAll();
     }
-    public void addObservationToCollection(Long collectionId, Long observationId, User user) {
+    public boolean addObservationToCollection(Long collectionId, Long observationId, User user) {
         
         // Check if the user owns the collection
         Collection collection = collectionRepository.findById(collectionId).orElse(null);
@@ -60,11 +60,17 @@ public class CollectionService {
             // Check if the observation exists
             Observation observation = observationRepository.findById(observationId).orElse(null);
             if (observation != null) {
+                boolean alreadyExists = collection.getObservations().stream()
+                        .anyMatch(obs -> obs.getId().equals(observationId));
                 // Add the observation to the collection
+               if(!alreadyExists){
                 collection.getObservations().add(observation);
                 collectionRepository.save(collection);
+                return true;
+               }
             }
         }
+        return false;
     }
     public void removeObservationFromCollection(Long collectionId, Long observationId, User user) {
         Collection collection = collectionRepository.findById(collectionId).orElse(null);

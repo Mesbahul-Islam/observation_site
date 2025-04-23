@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Collections - Astronomy Observations</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/components.css}" />
+    <link rel="stylesheet" th:href="@{/css/navbar.css}" />
+    <link rel="stylesheet" th:href="@{/css/pages/collections.css}" />
+</head>
+<body>
+    <div th:replace="~{fragments/header :: navbar}"></div>
+    
+    <div class="container">
+        <div class="page-header">
+            <h1>My Collections</h1>
+            <a th:href="@{/collections/new}" class="btn-primary">Create New Collection</a>
+        </div>
+        
+        <div th:if="${collections.empty}" class="empty-state">
+            <p>You don't have any collections yet.</p>
+            <p>Create a collection to organize your favorite astronomical observations.</p>
+            <a th:href="@{/collections/new}" class="btn-primary">Create Your First Collection</a>
+        </div>
+        
+        <div th:if="${!collections.empty}" class="collections-grid">
+            <div th:each="collection : ${collections}" class="collection-card">
+                <h3>
+                    <a th:href="@{/collections/{id}(id=${collection.id})}" th:text="${collection.name}">Collection Name</a>
+                </h3>
+                <div class="observation-count">
+                    <span th:text="${collection.observations != null ? collection.observations.size() : 0}">0</span> observations
+                </div>
+                <div class="description" th:text="${collection.description}">
+                    Collection description goes here.
+                </div>
+                <div class="collection-actions">
+                    <a th:href="@{/collections/{id}(id=${collection.id})}" class="button">View Collection</a>
+                    <form th:action="@{/collections/{id}/delete(id=${collection.id})}" method="post" style="display:inline;">
+                        <button type="submit" class="button danger" onclick="return confirm('Are you sure you want to delete this collection?')">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

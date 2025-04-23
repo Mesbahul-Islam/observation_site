@@ -89,4 +89,29 @@ public class CollectionController {
         // Implement PDF export functionality
         return "redirect:/collections/" + id;
     }
+
+    @PostMapping("/{id}/delete")
+    public String deleteCollection(@PathVariable Long id, Authentication authentication) {
+        User currentUser = getCurrentUser(authentication);
+        Collection collection = collectionService.getCollectionById(id);
+        
+        if (!collection.getUser().getId().equals(currentUser.getId())) {
+            return "redirect:/collections";
+        }
+        
+        collectionService.deleteCollection(id);
+        return "redirect:/collections";
+    }
+
+    @PostMapping("/add-observation")
+    public String addObservationToCollection(
+            @RequestParam Long collectionId,
+            @RequestParam Long observationId,
+            Authentication authentication) {
+        
+        User currentUser = getCurrentUser(authentication);
+        boolean added = collectionService.addObservationToCollection(collectionId, observationId, currentUser);
+        
+        return "redirect:/observations/" + observationId;
+    }
 }

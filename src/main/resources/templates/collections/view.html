@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${collection.name} + ' - Astronomy Observations'">Collection - Astronomy Observations</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/components.css}" />
+    <link rel="stylesheet" th:href="@{/css/navbar.css}" />
+    <link rel="stylesheet" th:href="@{/css/pages/observations.css}" />
+    <style>
+        /* Custom styles for the collection view page */
+        .collection-header {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .collection-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 2rem;
+            color: #333;
+            cursor: pointer;
+        }
+        
+        .observation-grid {
+            margin-top: 30px;
+        }
+        
+        .empty-collection {
+            text-align: center;
+            padding: 40px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            color: #6c757d;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="~{fragments/header :: navbar}"></div>
+    
+    <div class="container">
+        <div class="collection-header">
+            <h1 th:text="${collection.name}">Collection Name</h1>
+            <p th:text="${collection.description}">Collection description goes here.</p>
+            
+            <div class="collection-actions">
+                <a th:href="@{/collections}" class="button">Back to Collections</a>
+                <a th:href="@{/collections/{id}/pdf(id=${collection.id})}" class="button">Export to PDF</a>
+            </div>
+            
+            <span class="close-btn" onclick="handleClose()">&times;</span>
+        </div>
+        
+        <div th:if="${collection.observations == null || collection.observations.empty}" class="empty-collection">
+            <p>This collection doesn't have any observations yet.</p>
+            <p>Browse observations and add them to this collection.</p>
+            <a th:href="@{/observations}" class="button">Browse Observations</a>
+        </div>
+        
+        <div th:if="${collection.observations != null && !collection.observations.empty}" class="observation-grid">
+            <div th:each="observation : ${collection.observations}" class="observation-card">
+                <h3>
+                    <a th:href="@{/observations/{id}(id=${observation.id})}" th:text="${observation.name}">Observation Name</a>
+                </h3>
+                
+                <div class="observation-meta">
+                    <p>By: <span th:text="${observation.user.nickname}">User</span></p>
+                    <p>Viewed: <span th:text="${observation.viewCount}">0</span> times</p>
+                    <p>Created: <span th:text="${#temporals.format(observation.createdAt, 'dd MMM yyyy')}">01 Jan 2025</span></p>
+                </div>
+                
+                <div class="observation-coordinates">
+                    <p>
+                        <strong>Coordinates:</strong> 
+                        RA: <span th:text="${#numbers.formatDecimal(observation.rightAscension, 1, 4)}">0.0000</span>h, 
+                        Dec: <span th:text="${#numbers.formatDecimal(observation.declination, 1, 4)}">0.0000</span>°
+                    </p>
+                </div>
+                
+                <p class="observation-description" th:text="${#strings.abbreviate(observation.description, 150)}">Description...</p>
+                
+                <div class="card-actions">
+                    <a th:href="@{/observations/{id}(id=${observation.id})}" class="button">View Details</a>
+                    <form th:action="@{/collections/{collectionId}/remove/{observationId}(collectionId=${collection.id},observationId=${observation.id})}" method="post" style="display:inline;">
+                        <button type="submit" class="button danger" onclick="return confirm('Remove this observation from the collection?')">Remove</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function handleClose() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.history.back();
+            } else {
+                window.location.href = '/collections';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -21,16 +21,16 @@
 
 /* Featured sections */
 .featured-section {
-    margin: 60px 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .featured-section h2 {
     position: relative;
     padding-bottom: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .featured-section h2::after {
@@ -45,8 +45,38 @@
 
 .observation-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
+    margin-bottom: 30px;
+}
+
+.observation-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.observation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.observation-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.observation-card h3 a {
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.observation-card h3 a:hover {
+    color: #3498db;
 }
 
 .col {
@@ -57,6 +87,8 @@
 
 @media (min-width: 768px) {
     .featured-section {
+        display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: 30px;
     }
 }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Collection - Astronomy Observations</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/components.css}" />
+    <link rel="stylesheet" th:href="@{/css/navbar.css}" />
+    <style>
+        form {
+            position: relative;
+        }
+        .form-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            background: rgb(211, 96, 96);
+            border-radius: 50%;
+            aspect-ratio: 1 / 1;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: color 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="~{fragments/header :: navbar}"></div>
+    
+    <div class="container">
+        <h1>Create New Collection</h1>
+        
+        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+        
+        <form th:action="@{/collections}" method="post">
+            <span class="form-close-btn" onclick="handleClose()">&times;</span>
+            
+            <div class="form-group">
+                <label for="name">Collection Name</label>
+                <input type="text" id="name" name="name" required />
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn-primary">Create Collection</button>
+        </form>
+    </div>
+
+    <script>
+        function handleClose() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.history.back();
+            } else {
+                window.location.href = '/collections';
+            }
+        }
+    </script>
+</body>
+</html>

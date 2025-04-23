@@ -10,4 +10,4 @@
 8. ~~Fix commenting~~
 9. ~~Fix deleting~~
 10. Fix rating (still have to do )
-11. Fix the logic that view is incremented for each user view. this would take way too much work
+11. ~~Fix the logic that view is incremented for each user view.~~ this would take way too much work
