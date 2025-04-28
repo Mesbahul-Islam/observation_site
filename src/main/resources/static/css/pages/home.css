@@ -11,6 +11,7 @@
     font-size: 2.5rem;
     margin-bottom: 20px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color:#fff;
 }
 
 .hero p {
@@ -22,15 +23,16 @@
 /* Featured sections */
 .featured-section {
     margin: 40px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: block; 
+    width: 100%;
 }
 
 .featured-section h2 {
     position: relative;
     padding-bottom: 15px;
     margin-bottom: 20px;
+    width: 100%;
+    display: block; 
 }
 
 .featured-section h2::after {
@@ -48,6 +50,8 @@
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
     margin-bottom: 30px;
+    clear: both; 
+    width: 100%; 
 }
 
 .observation-card {
@@ -86,7 +90,7 @@
 }
 
 @media (min-width: 768px) {
-    .featured-section {
+    .featured-section:nth-child(2) {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 30px;

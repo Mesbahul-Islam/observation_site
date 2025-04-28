@@ -115,6 +115,10 @@
                     <!-- Collection Section -->
                     <div class="card-section" sec:authorize="isAuthenticated()">
                         <span class="card-label">Add to Collection</span>
+                        <!-- Display success or failure for adding to collection -->
+                        <div th:if="${message}" th:class="${'alert alert-' + (messageType ?: 'info')}" style="margin-bottom: 20px;">
+                            <span th:text="${message}">Message text</span>
+                        </div>
                         <form th:action="@{/collections/add-observation}" method="post">
                             <input type="hidden" name="observationId" th:value="${observation.id}" />
                             <div style="display: flex; gap: 10px; align-items: center;">
