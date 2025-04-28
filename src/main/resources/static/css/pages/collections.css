@@ -32,11 +32,6 @@
     margin-bottom: 15px;
 }
 
-.collection-actions {
-    display: flex;
-    justify-content: space-between;
-}
-
 .empty-state {
     text-align: center;
     padding: 40px;
@@ -45,3 +40,60 @@
     color: #6c757d;
     margin-top: 30px;
 }
+
+
+/* Add this to your collections.css file */
+.collection-actions form button.button-danger {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #dc3545;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.collection-actions form button.button-danger:hover {
+    background-color: #c82333;
+}
+
+/* Fix the collection actions layout */
+.collection-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
+}
+
+.collection-actions > a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #3498db;
+    transition: background-color 0.3s;
+}
+
+.collection-actions > a:hover {
+    background-color: #2980b9;
+}
+
+
+
+.create-collection-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.create-collection-btn:hover {
+    background-color: #2980b9;
+}
+

@@ -3,8 +3,8 @@
 <head>
     <title>My Collections - Astronomy Observations</title>
     <link rel="stylesheet" th:href="@{/css/base.css}" />
-    <link rel="stylesheet" th:href="@{/css/components.css}" />
     <link rel="stylesheet" th:href="@{/css/navbar.css}" />
+    <link rel="stylesheet" th:href="@{/css/components.css}" />
     <link rel="stylesheet" th:href="@{/css/pages/collections.css}" />
 </head>
 <body>
@@ -36,7 +36,7 @@
                 <div class="collection-actions">
                     <a th:href="@{/collections/{id}(id=${collection.id})}" class="button">View Collection</a>
                     <form th:action="@{/collections/{id}/delete(id=${collection.id})}" method="post" style="display:inline;">
-                        <button type="submit" class="button danger" onclick="return confirm('Are you sure you want to delete this collection?')">Delete</button>
+                        <button type="submit" class="button-danger" onclick="return confirm('Are you sure you want to delete this collection?')">Delete</button>
                     </form>
                 </div>
             </div>

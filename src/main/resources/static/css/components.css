@@ -30,10 +30,15 @@ nav {
     color: #fff;
     text-decoration: none;
     transition: color 0.3s;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    display: inline-block;
+
 }
 
 .nav-links a:hover {
-    color: #4f80db;
+    color: #5b81c9;
 }
 
 #btn-primary:hover{
@@ -59,38 +64,12 @@ nav {
     margin-bottom: 10px;
 }
 
-/* Buttons */
-.button {
-    display: inline-block;
-    padding: 8px 15px;
-    background-color: #3498db;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
-
-.button:hover {
-    background-color: #2980b9;
-}
-
-.button.secondary {
-    background-color: #6c757d;
-}
-
-.button.danger {
-    background-color: #dc3545;
-}
 
 /* Forms */
 form {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     max-width: 600px;
     margin: 20px auto;
 }
@@ -148,7 +127,6 @@ select {
     border: 1px solid #f5c6cb;
 }
 
-/* Add to existing components.css */
 
 /* Page header */
 .page-header {
@@ -160,52 +138,78 @@ select {
     padding-bottom: 15px;
 }
 
-/* Button variants */
-.button {
-    display: inline-block;
-    padding: 8px 15px;
-    background-color: #3498db;
-    color: white;
-    text-decoration: none;
+
+/* Base button styles */
+.button,
+.button-observation-card,
+button.delete {
+    padding: 8px 12px;
     border-radius: 4px;
-    border: none;
+    text-decoration: none;
+    font-weight: 500;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
+    transition: background-color 0.2s, transform 0.1s;
+    border: none;
+    text-align: center;
+    margin: 5px;
+    box-sizing: border-box;
+    height: 38px;
+    line-height: 20px;
 }
 
-.button:hover {
-    background-color: #2980b9;
-}
-
-
-
+/* Primary button - blue */
+.button, 
 .button-observation-card {
-    display: inline-block;
-    padding: 8px 15px;
     background-color: #3498db;
     color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
 }
 
+.button:hover, 
 .button-observation-card:hover {
     background-color: #2980b9;
+    transform: translateY(-2px);
 }
 
+.edit-button{
+    margin: auto;
+    background-color: #666;
+    padding: 8px 12px;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    border: none;
+
+
+}
+
+/* Delete button - red */
+button.delete,
 .danger {
     background-color: #dc3545;
+    color: white;
 }
 
+button.delete:hover,
 .danger:hover {
     background-color: #c82333;
+    transform: translateY(-2px);
 }
 
-/* Inline form */
+/* Card action buttons container */
+.card-actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+/* Fix for inline forms containing buttons */
 .inline-form {
-    display: inline;
+    display: inline-block;
+    margin: 0;
 }
